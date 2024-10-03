@@ -1,0 +1,98 @@
+import random
+import numpy as np
+import math
+
+# Feitiços pré-definidos com intenções específicas
+SPELLS = {
+    "proteção": ["Barreira de Luz", "Escudo Divino", "Proteção Energética"],
+    "cura": ["Chama Curativa", "Luz de Recuperação", "Círculo de Saúde"],
+    "força": ["Energia do Guerreiro", "Ascensão de Poder", "Fúria Interior"],
+    "sabedoria": ["Visão do Sábio", "Clareza Mental", "Foco Espiritual"],
+}
+
+# Parâmetro para representar a energia espiritual baseada na física
+def calcular_energia_espiritual(sentimentos, fe, frequencia_vibracional):
+    # A energia espiritual é baseada na fórmula de energia potencial (simplificada)
+    # E = m * g * h (massa, gravidade, altura) - Vamos adaptá-la para: E = S * F * V (sentimentos, fé, vibração)
+    energia_espiritual = sentimentos * fe * frequencia_vibracional
+    return energia_espiritual
+
+# Simulação de caos (entropia) que pode afetar o sucesso do feitiço
+def calcular_entropia(intencao, organização):
+    # Entropia varia dependendo da clareza e força da intenção
+    # Mais organização na intenção = menos entropia
+    if organização > 0.8:
+        return random.uniform(0.0, 0.2)  # Pouca entropia
+    elif organização > 0.5:
+        return random.uniform(0.2, 0.5)  # Média entropia
+    else:
+        return random.uniform(0.5, 0.8)  # Alta entropia, mais caos
+
+# Simulação de probabilidade quântica
+def calcular_probabilidade_quantica():
+    # Um fator de incerteza inspirado pela física quântica
+    return random.uniform(0.0, 1.0)
+
+# Função para gerar um feitiço com energia espiritual, entropia, e probabilidade quântica
+def gerar_boson_espiritual(intencao, sentimentos, fe, organização, frequencia_vibracional):
+    # Calcular a energia espiritual
+    energia_espiritual = calcular_energia_espiritual(sentimentos, fe, frequencia_vibracional)
+    
+    # Calcular entropia (caos no feitiço)
+    entropia = calcular_entropia(intencao, organização)
+
+    # Integrar a probabilidade quântica como fator de sucesso/falha
+    probabilidade = calcular_probabilidade_quantica()
+
+    print(f"Intenção: {intencao}, Sentimentos: {sentimentos}, Fé: {fe}, Entropia: {entropia:.2f}, Probabilidade Quântica: {probabilidade:.2f}")
+    print(f"Gerando {energia_espiritual:.2f} unidades de energia espiritual...")
+
+    # Seleciona um feitiço apropriado para a intenção
+    if intencao in SPELLS:
+        feitiço = random.choice(SPELLS[intencao])
+    else:
+        feitiço = "Feitiço Desconhecido"
+
+    # Ajuste da energia total com entropia e probabilidade quântica
+    energia_total_ajustada = energia_espiritual * (1 - entropia) * probabilidade
+    return feitiço, energia_total_ajustada
+
+# Função principal que calcula e lança o feitiço
+def criar_feitico(intencao, sentimentos, fe, organizacao, frequencia_vibracional):
+    if fe < 0.5:
+        print("Fé insuficiente. O feitiço falhará.")
+        return None
+    
+    if sentimentos < 1:
+        print("Energia emocional insuficiente. Reforce seus sentimentos.")
+        return None
+
+    # Gerar feitiço e calcular energia ajustada
+    feitiço, energia_total_ajustada = gerar_boson_espiritual(intencao, sentimentos, fe, organizacao, frequencia_vibracional)
+
+    # Definir chance de sucesso com base na energia ajustada
+    sucesso = energia_total_ajustada > random.uniform(0, 100)
+    
+    if sucesso:
+        print(f"Feitiço '{feitiço}' lançado com sucesso!")
+    else:
+        print(f"O feitiço '{feitiço}' falhou... Tente novamente.")
+
+    return sucesso
+
+# Simulação
+def main():
+    print("Bem-vindo ao Criador de Feitiços IA (Aprimorado com Ciência)!")
+    
+    # Parâmetros de entrada
+    intencao = input("Escolha a intenção do feitiço (proteção, cura, força, sabedoria): ").lower()
+    sentimentos = float(input("Digite o nível de sentimentos (1-10): "))
+    fe = float(input("Digite o nível de fé (0.0-1.0): "))
+    organizacao = float(input("Qual é o nível de organização da intenção (0.0-1.0): "))
+    frequencia_vibracional = float(input("Digite a frequência vibracional espiritual (1-10): "))
+
+    # Criação do feitiço
+    criar_feitico(intencao, sentimentos, fe, organizacao, frequencia_vibracional)
+
+if __name__ == "__main__":
+    main()
