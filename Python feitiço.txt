@@ -1,0 +1,63 @@
+import random
+import numpy as np
+
+# Feitiços pré-definidos baseados em intenções e sentimentos
+SPELLS = {
+    "proteção": ["Barreira de Luz", "Escudo Divino", "Proteção Energética"],
+    "cura": ["Chama Curativa", "Luz de Recuperação", "Círculo de Saúde"],
+    "força": ["Energia do Guerreiro", "Ascensão de Poder", "Fúria Interior"],
+    "sabedoria": ["Visão do Sábio", "Clareza Mental", "Foco Espiritual"],
+}
+
+# Função para gerar um "bóson espiritual" (nossa representação simbólica da energia espiritual)
+def gerar_boson_espiritual(intencao, sentimentos, fe):
+    energia_total = sentimentos * fe  # A energia espiritual é amplificada pela fé
+    print(f"Concentrando {energia_total} unidades de energia espiritual para o feitiço '{intencao}'...")
+
+    # Seleciona um feitiço apropriado para a intenção
+    if intencao in SPELLS:
+        feitiço = random.choice(SPELLS[intencao])
+    else:
+        feitiço = "Feitiço Desconhecido"
+
+    # Gerar um "bóson espiritual" que leva a energia até o objetivo
+    print(f"O feitiço escolhido é: {feitiço}")
+    return feitiço, energia_total
+
+# Função para definir o feitiço com base na intenção, sentimento e fé
+def criar_feitico(intencao, sentimentos, fe):
+    # Verifica os parâmetros (intenção, sentimentos, fé)
+    if fe < 0.5:
+        print("Fé insuficiente. O feitiço falhará.")
+        return None
+    
+    if sentimentos < 1:
+        print("Energia emocional insuficiente. Reforce seus sentimentos.")
+        return None
+
+    # Gera o feitiço
+    feitiço, energia_total = gerar_boson_espiritual(intencao, sentimentos, fe)
+    
+    # Simulação do envio do feitiço
+    sucesso = energia_total > random.uniform(0, 100)  # O sucesso depende da energia acumulada
+    if sucesso:
+        print(f"Feitiço '{feitiço}' lançado com sucesso!")
+    else:
+        print(f"O feitiço '{feitiço}' falhou... Tente novamente.")
+
+    return sucesso
+
+# Simulação de um feitiço
+def main():
+    print("Bem-vindo ao Criador de Feitiços IA!")
+    
+    # Input do usuário para intenção, sentimentos e fé
+    intencao = input("Escolha a intenção do feitiço (proteção, cura, força, sabedoria): ").lower()
+    sentimentos = float(input("Digite o nível de sentimentos (1-10): "))  # Representa a força emocional
+    fe = float(input("Digite o nível de fé (0.0-1.0): "))  # A fé é um valor entre 0.0 e 1.0
+    
+    # Criação do feitiço
+    criar_feitico(intencao, sentimentos, fe)
+
+if __name__ == "__main__":
+    main()
